@@ -1,6 +1,6 @@
-# AI Team
+# Final Project
 
-This repository contains the AI components for a medical chatbot that helps patients detect their diseases based on given symptoms. The chatbot combines two models: one for friendly chat, created using a simple neural network (NN), and another for predicting diseases, built using a pretrained BERT model.
+This repository holds the AI components for a lung and colon image classification model. It includes various MLflow experiments of different models.
 
 ## Deployment Options
 
@@ -15,62 +15,25 @@ This repository is divided into two parts:
 
 ## First part is for Chatbot Model
 
-### The Chatbot model is made by two models and integrated with front end
+### The Chatbot model is made by the best model and integrated with front end
 
-### 1. BERT Model
+### 1. Model
 
 #### Setup
 
 1. **Clone the repository and create a virtual environment:**
    ```bash
-   $ git clone https://github.com/InnovateX-Team/Machine-leaning.git
-   $ cd chatbot-deployment
+   $ git clone https://github.com/AhmedMaherTohmay/Depi_Project.git
+   $ cd project
    $ python3 -m venv venv
    $ . venv/bin/activate
    ```
 2. **Install dependencies:**
    ```bash
-   $ (venv) pip install Flask torch torchvision nltk transformers
-   ```
-3. **Install NLTK package:**
-   ```bash
-   $ (venv) python
-   >>> import nltk
-   >>> nltk.download('punkt')
+   $ (venv) pip install Flask keras tensorflow
    ```
 
-#### Training and Testing
-
-* **Run the Notebook** if you want to train the model on another dataset. Otherwise, the model and tokenizer are already saved.
-* **Test the BERT model:**
-
-```bash
-  $ (venv) python bert_model.py
-```
-
-### 2. Chatbot Model
-
-#### Setup
-
-* **Modify `intents.json`** with different intents and responses for your chatbot.
-* In case you don't want to change anything, then test the model as I already saved the model
-
-#### Training and Testing
-
-* **Train the model:**
-
-  ```bash
-  $ (venv) python train.py
-  ```
-
-  This will generate a `data.pth` file.
-* **Test the model in the console:**
-
-  ```bash
-  $ (venv) python chat.py
-  ```
-
-### 3. Frontend Integration
+### 2. Frontend Integration
 
 * **Static and Templates Folders:**
   * These folders contain the JavaScript, CSS, and HTML files used for this app.
@@ -82,26 +45,5 @@ This repository is divided into two parts:
 ```bash
   $ (venv) python app.py
 ```
+
   This command runs the main file, which contains the Flask API to run the app.
-
-
-## Using Docker
-1. Build the Docker image:
- 
- ```bash
-  docker build -t chatbot-app .
-
-```
-
-2. Run the Docker container:
- 
- ```bash
- docker run -d -p 5000:5000 chatbot-app
-
-```
-
-## Note
-
-I added a requriments.txt that contains all the dependencies needed to run the program
-
-I also added comments in the code to explain it in more details
