@@ -1,6 +1,6 @@
 # Final Project
 
-This repository holds the AI components for a lung and colon image classification model. It includes various MLflow experiments of different models.
+This repository holds the AI components for a lung and colon cancer image classification model. It includes various MLflow experiments of different models.
 
 ## Deployment Options
 
@@ -33,10 +33,15 @@ This repository is divided into two parts:
    $ (venv) pip install Flask keras tensorflow
    ```
 
+
 ### 2. Frontend Integration
 
-* **Static and Templates Folders:**
-  * These folders contain the JavaScript, CSS, and HTML files used for this app.
+* **Static and Templates Folders:** These folders contain the JavaScript, CSS, and HTML files used for this app.
+
+## Datasets
+
+* **Training Dataset:** The models were trained using the dataset from Kaggle: [Lung and Colon Cancer Histopathological Images](https://www.kaggle.com/datasets/andrewmvd/lung-and-colon-cancer-histopathological-images).
+* **Testing and Experiment Dataset:** The testing and experiments were conducted using the dataset from Hugging Face: [Lung Cancer Dataset](https://huggingface.co/datasets/VRJBro/lung_cancer_dataset).
 
 ## Deployment
 

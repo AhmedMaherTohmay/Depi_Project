@@ -4,7 +4,7 @@ import mlflow
 import mlflow.keras
 from keras.models import load_model
 import os
-from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, precision_score, recall_score, f1_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -43,6 +43,11 @@ def save_confusion_matrix(cm, categories, filepath):
     plt.savefig(filepath)
     plt.close()
 
+# Function to save classification report
+def save_classification_report(report, filepath):
+    with open(filepath, 'w') as f:
+        f.write(report)
+
 # Define experiment name
 experiment_name = "Lung and Colon Cancer Classification"
 mlflow.set_experiment(experiment_name)
@@ -77,6 +82,21 @@ with mlflow.start_run():
     cm_filepath = "confusion_matrix.png"
     save_confusion_matrix(cm, list(categories.keys()), cm_filepath)
     mlflow.log_artifact(cm_filepath)
+    
+    report_filepath = "classification_report.txt"
+    save_classification_report(report, report_filepath)
+    mlflow.log_artifact(report_filepath)
+    
+    # Calculate and log metrics
+    accuracy = accuracy_score(true_labels, predicted_labels)
+    precision = precision_score(true_labels, predicted_labels, average='weighted')
+    recall = recall_score(true_labels, predicted_labels, average='weighted')
+    f1 = f1_score(true_labels, predicted_labels, average='weighted')
+    
+    mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_metric("precision", precision)
+    mlflow.log_metric("recall", recall)
+    mlflow.log_metric("f1_score", f1)
     
     # Log the model as an artifact
     model_artifact_path = "model/gray_CNN"
